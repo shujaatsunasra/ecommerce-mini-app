@@ -365,8 +365,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(AppSpacing.lg),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
+          const SizedBox(height: 40),
           Icon(
             Icons.reviews_outlined,
             size: 48,

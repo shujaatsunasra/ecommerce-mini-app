@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               width: 40,
               height: 4,
               margin: const EdgeInsets.symmetric(vertical: AppSpacing.md),
-              decoration: BoxDecoration(
+        decoration: BoxDecoration(
                 color: AppPalette.mutedLight,
                 borderRadius: BorderRadius.circular(2),
               ),
@@ -121,9 +121,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       color: AppPalette.textPrimary,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                ],
-              ),
+            ),
+          ],
+        ),
             ),
             const SizedBox(height: AppSpacing.md),
             // Categories content
