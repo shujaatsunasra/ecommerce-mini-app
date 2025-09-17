@@ -1,0 +1,96 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 0 * * 1' # Run every Monday
+
+jobs:
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.0'
+        channel: 'stable'
+        cache: true
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Run dart format check
+      run: dart format --output=none --set-exit-if-changed .
+      
+    - name: Run dart analyze
+      run: dart analyze --fatal-infos
+      
+    - name: Run flutter analyze
+      run: flutter analyze --no-fatal-infos
+      
+    - name: Check for unused dependencies
+      run: dart pub deps --json | jq '.packages | keys[]' | sort > used_packages.txt
+      continue-on-error: true
+      
+    - name: Run dependency check
+      run: |
+        echo "Checking for unused dependencies..."
+        flutter pub deps --json > deps.json
+        echo "Dependency analysis complete"
+        
+    - name: Check for security vulnerabilities
+      run: |
+        echo "Checking for security vulnerabilities..."
+        flutter pub audit
+        echo "Security audit complete"
+        
+    - name: Generate code coverage report
+      run: |
+        flutter test --coverage
+        genhtml coverage/lcov.info -o coverage/html
+        echo "Coverage report generated"
+        
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage/html/
+        
+    - name: Comment PR with coverage
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const coverage = fs.readFileSync('coverage/lcov.info', 'utf8');
+          const lines = coverage.split('\n');
+          const lcovLine = lines.find(line => line.startsWith('LF:'));
+          const hitLine = lines.find(line => line.startsWith('LH:'));
+          
+          if (lcovLine && hitLine) {
+            const totalLines = parseInt(lcovLine.split(':')[1]);
+            const hitLines = parseInt(hitLine.split(':')[1]);
+            const percentage = ((hitLines / totalLines) * 100).toFixed(2);
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 📊 Code Coverage Report
+              
+              **Coverage: ${percentage}%**
+              - Lines covered: ${hitLines}
+              - Total lines: ${totalLines}
+              
+              [View detailed coverage report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+              `
+            });
+          }
