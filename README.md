@@ -5,7 +5,8 @@ A production-ready Flutter e-commerce mini-app built with clean architecture, fe
 ## 📱 App Demo
 
 ### Video Demonstration
-https://github.com/shujaatsunasra/ecommerce-mini-app/assets/videos/app-demo.webm
+[mini-ecom.webm](https://github.com/user-attachments/assets/92fc6b10-4b5e-4a88-aaf4-17508884cf1a)
+
 
 *Watch the app in action - showcasing product browsing, cart management, wishlist functionality, and user authentication*
 
