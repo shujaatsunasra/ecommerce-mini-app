@@ -2,17 +2,24 @@
 
 A production-ready Flutter e-commerce mini-app built with clean architecture, featuring authentication, product browsing, shopping cart, wishlist, and user profile management.
 
-## 📱 Screenshots
+## 📱 App Demo
 
-### App Overview
-![App Screenshots](https://via.placeholder.com/800x400/4CAF50/FFFFFF?text=App+Screenshots+Coming+Soon)
+### Video Demonstration
+https://github.com/shujaatsunasra/ecommerce-mini-app/assets/videos/app-demo.webm
 
-### Key Features
+*Watch the app in action - showcasing product browsing, cart management, wishlist functionality, and user authentication*
+
+### Key Features Demonstrated
 - **Product Catalog**: Browse products with infinite scroll and advanced filtering
 - **Shopping Cart**: Add/remove items with smooth animations
 - **Wishlist**: Save favorite products for later
 - **User Authentication**: Secure login/register system
 - **Profile Management**: User settings and preferences
+
+### Download APK
+[![Download APK](https://img.shields.io/badge/Download-APK-green?style=for-the-badge&logo=android)](https://github.com/shujaatsunasra/ecommerce-mini-app/releases/latest/download/app-release.apk)
+
+**Latest Release**: [v1.0.0](https://github.com/shujaatsunasra/ecommerce-mini-app/releases/latest) | **APK Size**: 49.2MB
 
 ## 🚀 Quick Setup
 
