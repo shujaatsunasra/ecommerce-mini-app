@@ -25,6 +25,24 @@ After creating the repository, run these commands:
 git push -u origin main
 ```
 
+### **Step 3: Add Video Demo (Optional)**
+
+For the best presentation, add a screen recording:
+
+1. **Record your app** (30-60 seconds)
+2. **Format**: MP4 (recommended) or WebP
+3. **Resolution**: 720p or 1080p
+4. **File size**: <10MB for GitHub
+5. **Content**: Show key features (browsing, cart, wishlist, profile)
+
+**Video Content Suggestions:**
+- App launch and navigation
+- Product browsing with search/filter
+- Add items to cart
+- Wishlist functionality
+- User profile management
+- Cart management and checkout flow
+
 ### **Step 3: Enable GitHub Actions**
 
 1. Go to your repository: https://github.com/shujaatsunasra/ecommerce-mini-app
