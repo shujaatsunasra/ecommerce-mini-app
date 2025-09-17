@@ -431,10 +431,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📞 Support
-
-For support, email support@example.com or create an issue in the repository.
-
----
 
 **Built with ❤️ using Flutter**
