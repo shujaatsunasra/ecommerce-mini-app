@@ -1,4 +1,4 @@
-# Fix GitHub Deployment Script
+git branch # Fix GitHub Deployment Script
 Write-Host "🔧 Fixing GitHub Deployment Issues..." -ForegroundColor Yellow
 
 # Check if repository exists
